@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Email Prediction</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #7a0000, #ff3b3b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: #ffffff;
+    padding: 40px;
+    width: 430px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+    color: #7a0000;
+    font-size: 26px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #444;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #7a0000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #a30000;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.spam {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.not-spam {
+    background-color: #28a745;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🚨 Welcome to Spam Email Prediction 🚨</h1>
+    <p>Enter your message below to check whether it is Spam or Not.</p>
+
+    <form action="/predict" method="post">
+        <input type="text" name="message" placeholder="Type your message here..." required>
+        <button type="submit">Check Now</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result
+            {% if 'Spam' in prediction_text %}
+                spam
+            {% else %}
+                not-spam
+            {% endif %}
+        ">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
